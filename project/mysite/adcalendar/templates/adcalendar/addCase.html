@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advocate Calendar</title>
+</head>
+<body>
+<h6>Add a case below </h6>
+{% if is_added %}
+    <script>alert("Data successfully added. ")</script>
+	<form action="{% url 'adcalendar:addCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% elif exists %}
+    <script>alert("Cases number already exists ")</script>
+	<form action="{% url 'adcalendar:addCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% else %}
+	<form action="{% url 'adcalendar:addCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% endif %}
+</body>
+<a href="index.html">Home</a> 
+</html>

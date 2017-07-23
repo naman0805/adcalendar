@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advocate Calendar</title>
+</head>
+<body>
+<h6></h6>
+{% if first %}
+    <form action="{% url 'adcalendar:viewCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+	</form>
+{% elif is_updated %}
+    <script>alert("Record update successfully ")</script>
+	<form action="{% url 'adcalendar:viewCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% elif not_exists %}
+    <script>alert("Record not found")</script>
+	<form action="{% url 'adcalendar:viewCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% elif case %}
+    <p>Case Number : {{case.case_number}}</p>
+	<p>Start Date : {{case.start_date}}</p>
+	<p>End Date : {{case.end_date}}</p>
+	<p>Advocate Name : {{case.ad_name}}</p>
+	<p>Remarks : {{case.remarks}}</p>
+	
+	
+{% else %}
+    <form action="{% url 'adcalendar:viewCase' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+	</form>
+	  	
+{% endif %}
+	
+</body>
+<a href="index.html">Home</a> 
+</html>
